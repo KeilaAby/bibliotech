@@ -1,17 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
     </head>
     <body>
+    <div class="navbar bg-base-100 shadow-lg">
+  {# Brand/Logo section #}
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+      </div>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a>Dashboard</a></li>
+        <li>
+          <a>Gestion</a>
+          <ul class="p-2">
+            <li><a>Livres</a></li>
+            <li><a>Catégories</a></li>
+            <li><a>Auteurs</a></li>
+          </ul>
+        </li>
+        <li><a>Emprunts</a></li>
+      </ul>
+    </div>
+    <a class="btn btn-ghost text-xl">BiblioTech</a>
+  </div>
+
+  {# Center section with search #}
+  <div class="navbar-center hidden lg:flex">
+    <div class="form-control">
+      <input type="text" placeholder="Rechercher..." class="input input-bordered w-24 md:w-auto" />
+    </div>
+  </div>
+
+  {# End section with profile dropdown #}
+  <div class="navbar-end">
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+        <div class="w-10 rounded-full">
+          <img alt="Avatar" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+      </div>
+      <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+        <li><a>Profil</a></li>
+        <li><a>Paramètres</a></li>
+        <li><a>Déconnexion</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
         {% block body %}{% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </body>
 </html>
