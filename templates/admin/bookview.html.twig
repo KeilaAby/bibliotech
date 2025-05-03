@@ -1,0 +1,242 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du livres
+{% endblock %}
+
+{% block body %}
+
+	<div class="w-full flex items-start space-x- shadow-md mb-8 pb-4">
+
+    {# image du livre #}
+		<div class="w-96 shadow-xl">
+			<figure>
+				<img class="object-cover size-100" src="{{asset('build/images/'~ book.image)}}" alt="Livre"/>
+			</figure>
+		</div>
+
+		<div class="w-full px-6">
+
+      {# entête #}
+			<div class="flex items-start justify-between">
+        {# petite description #}
+				<div class="space-y-1">
+          <h2 class="text-3xl font-bold text-wrap">{{book.title}}</h2>
+          <div class="flex space-x-2"> 
+    {% if livreCategories is not empty %}
+        {% for category in livreCategories %}
+            <div class="badge badge-outline badge-primary">{{category.name}}</div>
+
+        {% endfor %}
+    {% endif %}
+          </div>
+         
+          <p class="text-lg font-thin">{{book.author}}</p>
+          <button class="text-lg text-left font-semibold">{{book.price}}€</button>
+          <div class="text-base-content flex">
+            <span class="text-warning text-xl">4.5</span>
+            <div class="rating">
+              <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="1 star" />
+              <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="2 star"  />
+              <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="3 star" />
+              <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="4 star" checked="checked"/>
+              <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="5 star" />
+            </div>
+          </div>
+        </div>
+        {# bouton d'ajout au panier #}
+        <div class="flex flex-col space-y-2">
+          <button class="btn btn-base-300 btn-lg">Ajouter au panier</button>
+          <button class="btn btn-primary btn-lg">Acheter</button>
+			  </div>
+      </div>
+
+      <div class="divider"></div>
+
+      {# description #}
+			<div>
+        <p class="text-lg font-thin text-info-content text-justify">
+          {{book.description}}
+        </p>
+      </div>
+
+      <div class="divider"></div>
+      {# détails #}
+			<div>
+       
+        <div class="flex space-y-1 justify-between">
+          <p class="text-lg font-thin"><b>ISBN :</b> {{book.isbn}}</p>
+          <p class="text-lg font-thin"><b>Date de publication:</b> {{book.datePub|date('d/m/Y')}}</p>
+          <p class="text-lg font-thin"><b>Langue:</b> {{book.lang}}</p>
+          <p class="text-lg font-thin"><b>Éditeur:</b> {{book.editor}}</p>
+          <p class="text-lg font-thin"><b>Poids:</b> {{book.poids}}</p>
+          <p class="text-lg font-thin"><b>Dimension : </b> {{book.dimension}}</p>
+        </div>
+      
+      </div>
+    </div>
+	</div>
+
+
+  <div class="w-full shadow-md">
+    <div class="tabs tabs-lift">
+      <input type="radio" name="my_tabs_3" class="tab" aria-label="Categories simialire"  checked="checked"/>
+      <div class="tab-content bg-base-100 border-base-300 p-6">
+        <div class="grid grid-cols-4 gap-4">
+
+          {# Card 1 #}
+          <div class="card bg-base-100 w-96 shadow-md">
+            <figure>
+              <img class="object-contain size-100" src="https://m.media-amazon.com/images/I/6132FVQ5ZQL._SL1499_.jpg" alt="Guide_survie"/>
+            </figure>
+            <div class="card-body">
+              <button class="text-warning text-lg text-left font-semibold">120,00€</button>
+              <h2 class="card-title font-bold">La data: Guide de survie dans le monde</h2>
+              <p class="text-base-content">Alison Roberts, Kate MacGuire, Mer</p>   
+            </div>
+          </div>
+          {# Card 1 #}
+          <div class="card bg-base-100 w-96 shadow-md">
+            <figure>
+              <img class="object-contain size-100" src="https://m.media-amazon.com/images/I/6132FVQ5ZQL._SL1499_.jpg" alt="Guide_survie"/>
+            </figure>
+            <div class="card-body">
+              <button class="text-warning text-lg text-left font-semibold">120,00€</button>
+              <h2 class="card-title font-bold">La data: Guide de survie dans le monde</h2>
+              <p class="text-base-content">Alison Roberts, Kate MacGuire, Mer</p>   
+            </div>
+          </div>
+          {# Card 1 #}
+          <div class="card bg-base-100 w-96 shadow-md">
+            <figure>
+              <img class="object-contain size-100" src="https://m.media-amazon.com/images/I/6132FVQ5ZQL._SL1499_.jpg" alt="Guide_survie"/>
+            </figure>
+            <div class="card-body">
+              <button class="text-warning text-lg text-left font-semibold">120,00€</button>
+              <h2 class="card-title font-bold">La data: Guide de survie dans le monde</h2>
+              <p class="text-base-content">Alison Roberts, Kate MacGuire, Mer</p>   
+            </div>
+          </div>
+          {# Card 1 #}
+          <div class="card bg-base-100 w-96 shadow-md">
+            <figure>
+              <img class="object-contain size-100" src="https://m.media-amazon.com/images/I/6132FVQ5ZQL._SL1499_.jpg" alt="Guide_survie"/>
+            </figure>
+            <div class="card-body">
+              <button class="text-warning text-lg text-left font-semibold">120,00€</button>
+              <h2 class="card-title font-bold">La data: Guide de survie dans le monde</h2>
+              <p class="text-base-content">Alison Roberts, Kate MacGuire, Mer</p>   
+            </div>
+          </div>
+
+        </div>
+      </div>
+     
+      <input type="radio" name="my_tabs_3" class="tab" aria-label="A propos de l'Auteur" />
+      <div class="tab-content bg-base-100 border-base-300 p-6">
+
+        <div class="flex space-x-10 justify-start items-center">
+          {# image de l'auteur #}
+          <div class="avatar ">
+            <div class="w-30 rounded-full">
+              <img src="https://m.media-amazon.com/images/S/amzn-author-media-prod/qgushojm4202cgqeh9lv86g2a7._SY600_.jpg" alt="auteur"/>
+            </div>
+          </div>
+
+          <div class="flex-none">
+            <p class="text-3xl font-bold"><span>Alison Roberts</span></p>
+            <p class="text-lg font-thin"><b>Nationalité:</b> Anglais</p>
+            <p class="text-lg font-thin"><b>Date de naissance:</b> 1990-05-02</p>
+            <p class="text-lg font-thin"><b>Nombre de livres publiés:</b> 10</p>
+          </div>
+
+          <div class="text-lg font-thin text-justify justify-end">
+            <p >
+              Excellent pédagogue, Etienne LANGLET est formateur et consultant depuis plus de 20 ans en développement et méthodologie. Développeur PHP depuis 1999, il développe avec Symfony et dispense des formations sur le sujet depuis plus de 10 ans. Dans ce livre, il partage avec le lecteur l'expérience qu'il a acquise au cours de ses différentes missions et projets.
+            </p >
+          </div>
+
+          </div>
+      
+      </div>
+
+      <input type="radio" name="my_tabs_3" class="tab" aria-label="Avis des clients" />
+      <div class="tab-content bg-base-100 border-base-300 p-6">
+        <div class="grid grid-cols-4 gap-3">
+
+          {# card 1 #}
+          <div class="card w-96 bg-base-100 card-md shadow-sm">
+              <div class="card-body">
+                <h2 class="card-title">Rakotozafy Miora</h2>
+                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+              </div>
+        
+          </div>
+
+          {# card 2 #}
+          <div class="card w-96 bg-base-100 card-md shadow-sm">
+              <div class="card-body">
+                <h2 class="card-title">Rakotozafy Miora</h2>
+                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+              </div>
+        
+          </div>
+
+          {# card 3 #}
+          <div class="card w-96 bg-base-100 card-md shadow-sm">
+              <div class="card-body">
+                <h2 class="card-title">Rakotozafy Miora</h2>
+                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+              </div>
+     
+          </div>
+          {# card 4 #}
+          <div class="card w-96 bg-base-100 card-md shadow-sm">
+              <div class="card-body">
+                <h2 class="card-title">Rakotozafy Miora</h2>
+                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+              </div>
+        
+          </div>
+
+          {# card 5 #}
+          <div class="card w-96 bg-base-100 card-md shadow-sm">
+              <div class="card-body">
+                <h2 class="card-title">Rakotozafy Miora</h2>
+                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+              </div>
+        
+          </div>
+
+          {# card 6 #}
+          <div class="card w-96 bg-base-100 card-md shadow-sm">
+              <div class="card-body">
+                <h2 class="card-title">Rakotozafy Miora</h2>
+                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+              </div>
+     
+          </div>
+          {# card 7 #}
+          <div class="card w-96 bg-base-100 card-md shadow-sm">
+              <div class="card-body">
+                <h2 class="card-title">Rakotozafy Miora</h2>
+                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+              </div>
+        
+          </div>
+
+          {# card 8 #}
+          <div class="card w-96 bg-base-100 card-md shadow-sm">
+              <div class="card-body">
+                <h2 class="card-title">Rakotozafy Miora</h2>
+                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+              </div>
+     
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

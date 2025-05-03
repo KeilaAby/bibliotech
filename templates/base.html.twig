@@ -1,66 +1,171 @@
 <!DOCTYPE html>
 <html data-theme="light">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
 
-    </head>
-    <body>
-    <div class="navbar bg-base-100 shadow-lg">
-  {# Brand/Logo section #}
-  <div class="navbar-start">
-    <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-        </svg>
-      </div>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <li><a>Dashboard</a></li>
-        <li>
-          <a>Gestion</a>
-          <ul class="p-2">
-            <li><a>Livres</a></li>
-            <li><a>Catégories</a></li>
-            <li><a>Auteurs</a></li>
-          </ul>
-        </li>
-        <li><a>Emprunts</a></li>
-      </ul>
-    </div>
-    <a class="btn btn-ghost text-xl">BiblioTech</a>
-  </div>
+	</head>
+	<body class="min-h-screen bg-base-300 space-x-3">
 
-  {# Center section with search #}
-  <div class="navbar-center hidden lg:flex">
-    <div class="form-control">
-      <input type="text" placeholder="Rechercher..." class="input input-bordered w-24 md:w-auto" />
-    </div>
-  </div>
 
-  {# End section with profile dropdown #}
-  <div class="navbar-end">
-    <div class="dropdown dropdown-end">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-        <div class="w-10 rounded-full">
-          <img alt="Avatar" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-        </div>
-      </div>
-      <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-        <li><a>Profil</a></li>
-        <li><a>Paramètres</a></li>
-        <li><a>Déconnexion</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </body>
+		<div
+			class="flex space-x-3">
+			{# Barre latérale #}
+			<div
+				class="bg-base-100 h-screen w-64 flex-none p-4 font-semibold">
+
+				{# Categories #}
+				<ul class="menu rounded-box w-56">
+					<li class="menu-title uppercase text-xl">Catégorie</li>
+					{% for categ in categories %}
+						<li>
+							<a href="#">{{ categ.name }}</a>
+						</li>
+					{% endfor %}
+
+				</ul>
+			</div>
+
+			{# cotenu + barre de navigation #}
+			<div
+				class="bg-base-100 w-full flex-auto h-screen p-4">
+
+				{# barre de navigation #}
+				<div class="navbar bg-base-100 shadow-sm">
+					<div class="flex-1">
+						<span class="text-3xl text-basse uppercase">Biblio Tech</span>
+					</div>
+					<div class="flex-none">
+						<ul class="menu menu-horizontal px-1">
+							<li class="dropdown">
+								<a href="#" tabindex="0" role="button" class="m-1">Livres</a>
+								<ul tabindex="0" class="dropdown-content menu z-1 w-52 rounded-box bg-base-100 p-2 shadow-sm">
+									<li onclick="document.activeElement.blur()">
+										<a href="#" onclick="add_book.showModal()">Vendez vos livres</a>
+									</li>
+									<li onclick="document.activeElement.blur()">
+										<a href="#">Liste</a>
+									</li>
+									<li onclick="document.activeElement.blur()">
+										<a href="#">Configurer</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" tabindex="0" role="button" class="m-1">Membre</a>
+								<ul tabindex="0" class="dropdown-content menu z-1 w-52 rounded-box bg-base-100 p-2 shadow-sm">
+									<li onclick="document.activeElement.blur()">
+										<a href="#" onclick="member_SignUp.showModal()">S'inscrire</a>
+									</li>
+									<li onclick="document.activeElement.blur()">
+										<a href="#">Liste</a>
+									</li>
+
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" tabindex="0" role="button" class="m-1">Catégories</a>
+								<ul tabindex="0" class="dropdown-content menu z-1 w-52 rounded-box bg-base-100 p-2 shadow-sm">
+									<li onclick="document.activeElement.blur()">
+										<a href="#" onclick="category_create.showModal()">Ajouter</a>
+									</li>
+									<li onclick="document.activeElement.blur()">
+										<a href="#">Liste</a>
+									</li>
+
+								</ul>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+
+
+				{# Contenu de la page #}
+				<div class="mt-6"> {% block body %}{% endblock %}
+					</div>
+
+				</div>
+
+
+				{# FORMULAIRE EN MODE MODAL #}
+
+				{# formulaire de création de categories #}
+				<dialog id="category_create" class="modal">
+					<div class="modal-box w-11/12">
+
+						<button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="category_create.close()">✕</button>
+
+						{{form_start(form, {'method':'POST', 'action': path('addcategory')})}}
+						<h3 class="text-lg font-bold">Nouvelle categorie</h3>
+						{{ form_widget(form.name) }}
+						<div class="modal-action">
+							<button type="button" class="btn" onclick="category_create.close()">Annuler</button>
+							<button type="submit" class="btn btn-primary">Ajouter</button>
+						</div>
+						{{ form_end(form) }}
+				</dialog>
+			
+
+				{# formulaire d'inscription membre #}
+				<dialog id="member_SignUp" class="modal">
+					<div class="modal-box w-11/12 max-w-4xl">
+
+						<button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="member_SignUp.close()">✕</button>
+
+						{{form_start(formMembre, {'method':'POST', 'action': path('addMember')})}}
+						<h3 class="text-3xl font-bold text-center uppercase">S'incrire</h3>
+						{{ form_widget(formMembre.nom) }}
+						{{ form_widget(formMembre.prenom) }}
+						{{ form_widget(formMembre.birthday) }}
+						{{ form_widget(formMembre.adress) }}
+						{{ form_widget(formMembre.mail) }}
+						<div class="modal-action">
+							<button type="button" class="btn" onclick="member_SignUp.close()">Annuler</button>
+							{{form_widget(formMembre.Button)}}
+						</div>
+						{{ form_end(form) }}
+				</dialog>
+
+				{# formulaire d'ajout livre #}
+				<dialog id="add_book" class="modal">
+					<div class="modal-box w-11/12 max-w-4xl">
+
+						<button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="add_book.close()">✕</button>
+
+						{{form_start(formLivre, {'method':'POST', 'action': path('addLivres')})}}
+						<h3 class="text-3xl font-bold text-center uppercase">Publier un livre</h3>
+						{{ form_widget(formLivre.title) }}
+						{{ form_widget(formLivre.Author) }}
+						{{ form_widget(formLivre.price) }}
+						{{ form_widget(formLivre.description) }}
+						{{ form_widget(formLivre.isbn) }}
+						{{ form_widget(formLivre.datePub) }}
+						{{ form_widget(formLivre.editor) }}
+						{{ form_widget(formLivre.poids) }}
+						{{ form_widget(formLivre.lang) }}
+						{{ form_widget(formLivre.dimension) }}
+						{{ form_widget(formLivre.categories) }}
+						{{ form_widget(formLivre.image) }}
+						<div class="modal-action">
+							<button type="button" class="btn" onclick="add_book.close()">Annuler</button>
+							{{form_widget(formLivre.Button)}}
+						</div>
+						{{ form_end(formLivre) }}
+				</dialog>
+			
+
+
+				{% block javascripts %}
+					{{ encore_entry_script_tags('app') }}
+				{% endblock %}
+		    </div>
+	</body>
 </html>

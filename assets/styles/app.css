@@ -1,5 +1,39 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-    themes: all;
-}
+  themes : all;
+};
+/* @plugin "daisyui/theme" {
+  name: "megabutwhy";
+  default: true;
+  prefersdark: true;
+  color-scheme: "dark";
+  --color-base-100: oklch(98% 0.002 247.839);
+  --color-base-200: oklch(96% 0.003 264.542);
+  --color-base-300: oklch(92% 0.006 264.531);
+  --color-base-content: oklch(21% 0.034 264.665);
+  --color-primary: oklch(64% 0.222 41.116);
+  --color-primary-content: oklch(26% 0.051 172.552);
+  --color-secondary: oklch(82% 0.119 306.383);
+  --color-secondary-content: oklch(29% 0.149 302.717);
+  --color-accent: oklch(80% 0.114 19.571);
+  --color-accent-content: oklch(25% 0.092 26.042);
+  --color-neutral: oklch(21% 0.034 264.665);
+  --color-neutral-content: oklch(98% 0.002 247.839);
+  --color-info: oklch(78% 0.154 211.53);
+  --color-info-content: oklch(30% 0.056 229.695);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(26% 0.051 172.552);
+  --color-warning: oklch(85% 0.199 91.936);
+  --color-warning-content: oklch(28% 0.066 53.813);
+  --color-error: oklch(71% 0.202 349.761);
+  --color-error-content: oklch(28% 0.109 3.907);
+  --radius-selector: 2rem;
+  --radius-field: 1rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0
+} */
 

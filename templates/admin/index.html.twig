@@ -1,7 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Bienvenue sur Biblio!{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
 
 {% block body %}
-<h1></h1>
+
+	<div class="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-5 bg-base-200">
+
+    {# Card 1 #}
+    {% for book in livres %}
+    <div class="card bg-base-100 w-96 shadow-md cursor-pointer">
+    <a href="{{ path('bookview', {'id':book.id}) }}">
+      <figure>
+        <img class="object-contain size-100" src="{{asset('build/images/'~ book.image)}}" {# src="{{asset('/media/python.jpg')}}" #} alt="Guide_survie"/>
+      </figure>
+      <div class="card-body">
+        <button class="text-warning text-lg text-left font-semibold">{{book.price}}€</button>
+        <h2 class="card-title font-bold">{{book.title}}</h2>
+        <p class="text-base-content">{{book.author}}</p>
+      </div>
+    </a>
+    </div>
+  {% endfor %}
+
+  </div>
 {% endblock %}

@@ -74,6 +74,12 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
+
+    .copyFiles({
+        from: './assets/media/images',
+        to: 'images/[path][name].[ext]',
+        pattern: /\.(png|jpg|jpeg|gif|ico|svg|webp)$/
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();
