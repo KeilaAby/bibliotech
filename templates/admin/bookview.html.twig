@@ -22,8 +22,8 @@
 				<div class="space-y-1">
           <h2 class="text-3xl font-bold text-wrap">{{book.title}}</h2>
           <div class="flex space-x-2"> 
-    {% if livreCategories is not empty %}
-        {% for category in livreCategories %}
+    {% if book.categories is not empty %}
+        {% for category in book.categories %}
             <div class="badge badge-outline badge-primary">{{category.name}}</div>
 
         {% endfor %}
@@ -44,17 +44,22 @@
           </div>
         </div>
         {# bouton d'ajout au panier #}
-        <div class="flex flex-col space-y-2">
+        <div class="flex-none flex flex-col space-y-2">
           <button class="btn btn-base-300 btn-lg">Ajouter au panier</button>
           <button class="btn btn-primary btn-lg">Acheter</button>
-			  </div>
+          <div class="flex space-x-2 justify-between">
+            <button class="btn btn-warning"><img width="25" height="25" src="https://img.icons8.com/dotty/80/filled-trash.png" alt="filled-trash"/></button>
+            <button class="btn btn-base-100"><img width="32" height="32" src="https://img.icons8.com/windows/32/edit--v1.png" alt="edit--v1"/></button>
+           
+          </div>
+    			  </div>
       </div>
 
       <div class="divider"></div>
 
       {# description #}
 			<div>
-        <p class="text-lg font-thin text-info-content text-justify">
+        <p class="text-lg font-thin  text-justify">
           {{book.description}}
         </p>
       </div>
@@ -76,10 +81,10 @@
     </div>
 	</div>
 
-
+{# Onglet d'affichage des livres similaires, Autheur, avis des clients #}
   <div class="w-full shadow-md">
     <div class="tabs tabs-lift">
-      <input type="radio" name="my_tabs_3" class="tab" aria-label="Categories simialire"  checked="checked"/>
+      <input type="radio" name="my_tabs_3" class="tab font-extrabold" aria-label="Categories similaire"  checked="checked"/>
       <div class="tab-content bg-base-100 border-base-300 p-6">
         <div class="grid grid-cols-4 gap-4">
 

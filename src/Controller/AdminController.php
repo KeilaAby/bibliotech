@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +12,7 @@ use App\Entity\Membre;
 use App\Form\MembreTypeForm;
 use App\Entity\Livres;
 use App\Form\LivreTypeForm;
-use Doctrine\ORM\Tools\Console\EntityManagerProvider;
+
 
 
 final class AdminController extends AbstractBaseController
@@ -43,15 +42,15 @@ final class AdminController extends AbstractBaseController
     {
     
         $livreRepo = $entity->getRepository(Livres::class);
-        $livres = $livreRepo->findOneBy(['id' => $id]);
+        $livres = $livreRepo->find($id);
 
-        //Recpérer les catégories
-        $livreCategories = $livres->getCategories();
+        // //Recpérer les catégories
+        // $livreCategories = $livres->getCategories();
 
         return $this->render('admin/bookview.html.twig', array_merge(
             ['controller_name' => 'AdminController',
                 'book' => $livres,
-                'livreCategories' => $livreCategories,
+                // 'livreCategories' => $livreCategories,
             ],
             $this->getBasicData()
         ));
